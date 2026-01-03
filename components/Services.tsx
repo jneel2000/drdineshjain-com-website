@@ -113,7 +113,7 @@ const services = [
 ];
 
 export default function Services() {
-  const [expandedRows, setExpandedRows] = useState<Set<number>>(new Set());
+  const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
 
   return (
     <Section id="services" className="bg-white">
@@ -202,13 +202,28 @@ export default function Services() {
           >
             <button
               onClick={() => {
-                const rowIndex = Math.floor(index / 2);
-                setExpandedRows(prev => {
+                const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
+                setExpandedCards(prev => {
                   const newSet = new Set(prev);
-                  if (newSet.has(rowIndex)) {
-                    newSet.delete(rowIndex);
+                  if (isDesktop) {
+                    // On desktop, toggle both cards in the row
+                    const rowStart = Math.floor(index / 2) * 2;
+                    const card1 = rowStart;
+                    const card2 = rowStart + 1;
+                    if (newSet.has(card1) && newSet.has(card2)) {
+                      newSet.delete(card1);
+                      newSet.delete(card2);
+                    } else {
+                      newSet.add(card1);
+                      newSet.add(card2);
+                    }
                   } else {
-                    newSet.add(rowIndex);
+                    // On mobile, toggle only the clicked card
+                    if (newSet.has(index)) {
+                      newSet.delete(index);
+                    } else {
+                      newSet.add(index);
+                    }
                   }
                   return newSet;
                 });
@@ -234,13 +249,13 @@ export default function Services() {
                 </div>
                 <ChevronDown
                   className={`w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0 ${
-                    expandedRows.has(Math.floor(index / 2)) ? "rotate-180" : ""
+                    expandedCards.has(index) ? "rotate-180" : ""
                   }`}
                 />
               </div>
             </button>
 
-            {expandedRows.has(Math.floor(index / 2)) && (
+            {expandedCards.has(index) && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}

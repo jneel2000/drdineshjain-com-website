@@ -42,7 +42,7 @@ export default function Hero() {
             </motion.div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight mb-6 text-gray-900">
-              Expert Surgical Care with{" "}
+              <span className="text-[#06b6d4] font-semibold">Dr. Dinesh Jain:</span> Expert Surgical Care with{" "}
               <span className="font-semibold text-[#06b6d4]">Over 30 Years</span> of Excellence
             </h1>
 

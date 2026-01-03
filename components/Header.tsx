@@ -67,12 +67,9 @@ export default function Header() {
             >
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="text-lg lg:text-xl font-semibold text-gray-900 hover:text-[#06b6d4] transition-colors text-left leading-tight"
+                className="text-xl lg:text-2xl font-bold text-[#06b6d4] hover:text-[#0891b2] transition-colors text-left leading-tight"
               >
-                <div className="block">
-                  <span className="block">Centre for Endoscopy, Laparoscopy</span>
-                  <span className="block">and General Surgery</span>
-                </div>
+                Dr. Dinesh Jain
               </button>
             </motion.div>
           </div>
@@ -88,7 +85,7 @@ export default function Header() {
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="text-gray-700 hover:text-[#06b6d4] font-medium transition-colors text-sm"
+                className="text-gray-700 hover:text-[#06b6d4] font-medium transition-colors text-base lg:text-lg"
               >
                 {link.label}
               </button>
