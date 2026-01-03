@@ -7,7 +7,7 @@ import { Award, Users } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-gray-50 to-white overflow-hidden pt-16 lg:pt-20">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-gray-50 to-white overflow-hidden pt-24 lg:pt-20">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-pattern"></div>
@@ -97,6 +97,7 @@ export default function Hero() {
                     fill
                     className="object-cover"
                     priority
+                    unoptimized
                   />
                 </div>
               </div>

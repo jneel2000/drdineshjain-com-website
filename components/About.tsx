@@ -31,7 +31,7 @@ export default function About() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4 sm:gap-5 lg:gap-6 lg:items-center">
             {/* Left Panel - Content */}
-            <div className="space-y-2 sm:space-y-2.5 text-gray-600 leading-relaxed text-xs sm:text-sm lg:text-base">
+            <div className="order-2 lg:order-1 space-y-2 sm:space-y-2.5 text-gray-600 leading-relaxed text-xs sm:text-sm lg:text-base">
               <p className="text-sm sm:text-base font-medium text-gray-900">
                 Dr. Dinesh Jain is a distinguished general and laparoscopic surgeon with over 30 years of experience, dedicated to providing exceptional surgical care in Pune, Maharashtra.
               </p>
@@ -109,13 +109,14 @@ export default function About() {
             </div>
 
             {/* Right Panel - Image */}
-            <div className="lg:sticky lg:top-20 lg:flex lg:items-center lg:h-full">
+            <div className="order-1 lg:order-2 lg:sticky lg:top-20 lg:flex lg:items-center lg:h-full">
               <div className="relative w-full aspect-square max-w-xs mx-auto lg:max-w-none rounded-lg sm:rounded-xl overflow-hidden shadow-lg">
                 <Image
                   src="/images/AboutSectionImage.jpeg"
                   alt="Dr. Dinesh Jain"
                   fill
                   className="object-cover"
+                  unoptimized
                 />
               </div>
             </div>

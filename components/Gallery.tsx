@@ -82,6 +82,7 @@ export default function Gallery() {
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 1024px"
               priority
+              unoptimized
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">

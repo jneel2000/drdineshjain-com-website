@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Phone, Menu, X } from "lucide-react";
+import { Menu, X, User, Stethoscope, Building2, MessageSquare, PhoneCall } from "lucide-react";
 import CTAButton from "./CTAButton";
 
 export default function Header() {
@@ -18,11 +18,11 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Hospitals", href: "#hospitals" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "Contact", href: "#contact" },
+    { label: "About", href: "#about", icon: User },
+    { label: "Services", href: "#services", icon: Stethoscope },
+    { label: "Hospitals", href: "#hospitals", icon: Building2 },
+    { label: "Testimonials", href: "#testimonials", icon: MessageSquare },
+    { label: "Contact", href: "#contact", icon: PhoneCall },
   ];
 
   const scrollToSection = (href: string) => {
@@ -41,25 +41,41 @@ export default function Header() {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center"
-          >
+      <nav className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
+        <div className="flex items-center justify-between h-20 lg:h-20">
+          {/* Left side - Logo and Mobile Menu Button */}
+          <div className="flex items-center gap-3">
+            {/* Mobile Menu Button */}
             <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-lg lg:text-xl font-semibold text-gray-900 hover:text-[#06b6d4] transition-colors text-left leading-tight"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden p-2 text-gray-700 hover:text-[#06b6d4] transition-colors"
+              aria-label="Toggle menu"
             >
-              <div className="block">
-                <span className="block">Centre for Endoscopy, Laparoscopy</span>
-                <span className="block">and General Surgery</span>
-              </div>
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
-          </motion.div>
+
+            {/* Logo */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center"
+            >
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="text-lg lg:text-xl font-semibold text-gray-900 hover:text-[#06b6d4] transition-colors text-left leading-tight"
+              >
+                <div className="block">
+                  <span className="block">Centre for Endoscopy, Laparoscopy</span>
+                  <span className="block">and General Surgery</span>
+                </div>
+              </button>
+            </motion.div>
+          </div>
 
           {/* Desktop Navigation */}
           <motion.div
@@ -90,19 +106,6 @@ export default function Header() {
               Book Appointment
             </CTAButton>
           </motion.div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-gray-700 hover:text-[#06b6d4] transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
         </div>
 
         {/* Mobile Menu */}
@@ -111,24 +114,34 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden pb-4 border-t border-gray-200 mt-2"
+            className="lg:hidden absolute left-0 right-0 top-full bg-gradient-to-b from-white via-gray-50/50 to-white backdrop-blur-lg shadow-xl rounded-b-xl border border-gray-200/50"
           >
-            <div className="flex flex-col gap-4 pt-4">
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="text-left text-gray-700 hover:text-[#06b6d4] font-medium transition-colors py-2"
+            <div className="p-6 space-y-2">
+              {navLinks.map((link, index) => {
+                const IconComponent = link.icon;
+                return (
+                  <div key={link.href}>
+                    <button
+                      onClick={() => scrollToSection(link.href)}
+                      className="w-full flex items-center gap-4 text-left text-gray-700 hover:text-[#06b6d4] hover:bg-[#06b6d4]/5 font-medium transition-all duration-200 py-3 px-4 rounded-lg group"
+                    >
+                      <IconComponent className="w-5 h-5 text-[#06b6d4] group-hover:scale-110 transition-transform duration-200" />
+                      <span className="text-base">{link.label}</span>
+                    </button>
+                    {index < navLinks.length - 1 && (
+                      <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mx-4 my-1"></div>
+                    )}
+                  </div>
+                );
+              })}
+              <div className="pt-4 mt-4 border-t border-gray-200">
+                <CTAButton
+                  href="tel:+919822054142"
+                  className="w-full justify-center py-3 text-base font-semibold shadow-md hover:shadow-lg transition-shadow duration-200"
                 >
-                  {link.label}
-                </button>
-              ))}
-              <CTAButton
-                href="tel:+919822054142"
-                className="w-full justify-center mt-2"
-              >
-                Book Appointment
-              </CTAButton>
+                  Book Appointment
+                </CTAButton>
+              </div>
             </div>
           </motion.div>
         )}
