@@ -43,21 +43,6 @@ export default function Contact() {
             <h3 className="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
             
             <div className="space-y-4">
-              {/* Phone Numbers */}
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-[#06b6d4]/10 to-[#0891b2]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-5 h-5 text-[#06b6d4]" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-gray-500 text-sm mb-1">Phone</p>
-                  <a
-                    href="tel:+912024444440"
-                    className="text-gray-900 font-semibold text-lg hover:text-[#06b6d4] transition-colors block"
-                  >
-                    020-24444440
-                  </a>
-                </div>
-              </div>
 
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 bg-gradient-to-br from-[#06b6d4]/10 to-[#0891b2]/10 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -82,21 +67,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Email */}
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-[#06b6d4]/10 to-[#0891b2]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-5 h-5 text-[#06b6d4]" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-gray-500 text-sm mb-1">Email</p>
-                  <a
-                    href="mailto:drdineshjainsurgery@yahoo.com"
-                    className="text-gray-900 font-semibold text-lg hover:text-[#06b6d4] transition-colors break-all"
-                  >
-                    drdineshjainsurgery@yahoo.com
-                  </a>
-                </div>
-              </div>
 
               {/* Address */}
               <div className="flex items-start gap-4">
@@ -125,9 +95,11 @@ export default function Contact() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Visiting Hours</h3>
                 <div className="space-y-2 text-gray-600">
                   <p className="font-medium text-gray-900">Monday to Saturday</p>
-                  <p className="font-light">10:00 AM - 2:00 PM</p>
+                  <p className="font-light">11:00 AM - 2:00 PM</p>
                   <p className="font-medium text-gray-900 mt-4">Monday to Friday</p>
                   <p className="font-light">4:00 PM - 6:00 PM (By Appointment)</p>
+                  <p className="font-medium text-gray-900 mt-4">At Ruby Hall - Monday to Saturday</p>
+                  <p className="font-light">9:00 AM - 10:00 AM (By Appointment)</p>
                 </div>
               </div>
             </div>
